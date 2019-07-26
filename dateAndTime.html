@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Nathan James</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="js/jquery.zoom.min.js"></script>
+	<script src="js/main.js"></script>
+
+
+    <!-- my -->
+    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<!--Font Awesome (added because you use icons in your prepend/append)-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+
+
+		<style>
+		.carousel-inner img {
+    -webkit-filter: grayscale(90%);
+    filter: grayscale(80%); /* make all photos black and white */
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+.carousel-caption h3 {
+    color: #fff !important;
+}
+@media (max-width: 600px) {
+  .carousel-caption {
+    display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+  }
+}
+
+  #grad1 {
+       height: auto;
+       background: red; /* For browsers that do not support gradients */
+       background: linear-gradient(#E3FDF5, #FFE6FA); /* Standard syntax (must be last) */
+   }
+
+		</style>
+
+</head>
+
+
+
+    <!-- firebase authentication -->
+
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyA6swDC9X6ngehYczHLzxsk_Pck-b20ikY",
+        authDomain: "nathan-james-web.firebaseapp.com",
+        databaseURL: "https://nathan-james-web.firebaseio.com",
+        projectId: "nathan-james-web",
+        storageBucket: "nathan-james-web.appspot.com",
+        messagingSenderId: "429172932466"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+
+
+
+
+
+<body>
+	<!-- HEADER -->
+	<header>
+		<!-- top Header -->
+		<div id="top-header">
+			<div class="container">
+				<div class="pull-left">
+					<span>Welcome to Nathan James film Ticketing system</span>
+				</div>
+				<div class="pull-right">
+					<ul class="header-top-links">
+						<li><a href="#">Store</a></li>
+						<li><a href="#">Film Newsletter</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li class="dropdown default-dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>
+							<ul class="custom-menu">
+								<li><a href="#">English (ENG)</a></li>
+								<li><a href="#">German (DE)</a></li>
+								<li><a href="#">French (FR)</a></li>
+								<li><a href="#">Spanish (Es)</a></li>
+							</ul>
+						</li>
+						<li class="dropdown default-dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">LKR <i class="fa fa-caret-down"></i></a>
+							<ul class="custom-menu">
+								<li><a href="#">LKR (RS)</a></li>
+								<li><a href="#">EUR (€)</a></li>
+								<li><a href="#">USD ($)</a></li>
+
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /top Header -->
+
+		<!-- header -->
+		<div id="header">
+			<div class="container">
+				<div class="pull-left">
+					<!-- Logo -->
+					<div class="header-logo">
+						<a class="logo" href="index.html">
+							<img src="./img/logo.png" alt="">
+						</a>
+					</div>
+					<!-- /Logo -->
+
+					<!-- Search -->
+					<div class="header-search">
+						<form>
+							<input class="input search-input" type="text" placeholder="Enter your keyword">
+							<select class="input search-categories">
+								<option value="0">Film Categories</option>
+								<option value="1">All Movies</option>
+								<option value="1">Children Movies</option>
+								<option value="1">Elders Movies</option>
+
+							</select>
+							<button class="search-btn"><i class="fa fa-search"></i></button>
+						</form>
+					</div>
+					<!-- /Search -->
+				</div>
+				<div class="pull-right">
+					<ul class="header-btns">
+						<!-- Account -->
+						<li class="header-account dropdown default-dropdown">
+							<div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+								<div class="header-btns-icon">
+									<i class="fa fa-user-o"></i>
+								</div>
+                                
+								<strong class="text-uppercase" id="userName"><i class="fa fa-caret-down"></i></strong>
+							</div>
+							
+								<a href="#" class="text-uppercase" id="LogStatusBtn"></a>
+								<!-- <button href="#" class="text-uppercase" id="LogStatusBtn"></button> -->
+
+                                <script type="text/javascript">
+
+                                    firebase.auth().onAuthStateChanged(function(user){
+                                        if (user) {
+                                            document.getElementById("userName").innerHTML = user.displayName;
+											document.getElementById("LogStatusBtn").innerHTML = "Log Out";
+											
+											document.getElementById("LogStatusBtn").onclick = function (){
+												firebase.auth().signOut();
+												document.getElementById("userName").innerHTML = "My Account";
+												var setPage = document.getElementById("LogStatusBtn");
+												setPage.innerHTML = "Log In";
+												setPage.setAttribute("href", "main.html");
+											}
+
+                                        }else{
+                                            document.getElementById("userName").innerHTML = "My Account";
+											var setPage = document.getElementById("LogStatusBtn");
+											setPage.innerHTML = "Log In";
+											setPage.setAttribute("href","login.html");
+                                        }
+									});
+									
+
+                                </script>
+
+                            </div>
+                            <ul class="custom-menu">
+								<li><a href="#"><i class="fa fa-user-o"></i> My Account </a></li>
+								<li><a href="#"><i class="fa fa-heart-o"></i> Film Wishlist</a></li>
+								<li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
+								<li><a href="Login.php"><i class="fa fa-unlock-alt"></i> Login</a></li>
+								<li><a href="Login.php"><i class="fa fa-lock"></i>Admin Login</a></li>
+								<li><a href="Signin.php"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+							</ul>
+						</li>
+						<!-- /Account -->
+
+						<!-- Cart -->
+
+						<!-- /Cart -->
+
+						<!-- Mobile nav toggle-->
+						<li class="nav-toggle">
+							<button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+						</li>
+						<!-- / Mobile nav toggle -->
+					</ul>
+				</div>
+			</div>
+			<!-- header -->
+		</div>
+		<!-- container -->
+	</header>
+	<!-- /HEADER -->
+
+	<!-- NAVIGATION -->
+	<div id="navigation">
+		<!-- container -->
+		<div class="container">
+			<div id="responsive-nav">
+				<!-- category nav -->
+					<!-- place the category nav here -->
+
+				<!-- menu nav -->
+				<div class="menu-nav">
+						<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+						<ul class="menu-list">
+							<li><a href="index.php">Home</a></li>
+							<li><a href="index.php">Now Showing</a></li>
+							<li><a href="index.php">Reservations</a></li>
+							<li><a href="index.php">Trending</a></li>
+							<li><a href="index.php">Events</a></li>
+							<li><a href="index.php">Seminars</a></li>
+							<li><a href="index.php">Offers</a></li>
+
+						</ul>
+					</div>
+				<!-- menu nav -->
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+  <!-- /NAVIGATION -->
+
+  <div id="grad1">
+	  <br>
+  	<!-- BREADCRUMB -->
+	<div id="breadcrumb">
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><a href="index.php">Home</a></li>
+				<li class="active">Selecting a Date and Time</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /BREADCRUMB -->
+
+  <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+
+<br>
+<div class="row">
+<div class="col-sm-3">
+</div>
+<div class="col-sm-6">
+
+
+
+  <h2 style="text-align: center">Selecting a Date and Time</h2>
+  <hr><br>
+  <br>
+
+         <div class="row">
+          <div class="col-sm-3" ><br></div>
+           <form id="form" class="form-horizontal" method="post">
+            <div class="form-group ">
+
+             <div class="col-sm-6">
+					<div class="input-group">
+							<span class="input-group-addon">Name </span>
+
+                            <!-- <?php
+                                if (isset($_SESSION['movie'])) {
+                                    echo '<input id="msg" type="text" class="form-control" name="msg" value = "'.$_SESSION['movie'].'" >';
+                                }else {
+                                    echo '<input id="msg" type="text" class="form-control" name="msg" placeholder = " Enter the film name here " >';
+                                }
+                            ?> -->
+
+                            <input id="movieName" type="text" class="form-control" name="msg" value="">
+
+                            <script>
+                                if (typeof(Storage) !== "undefined") {
+                                    var movieName = document.getElementById("movieName");
+                                    movieName.setAttribute("value",sessionStorage.getItem("movie"));
+                                }else{
+                                    alert("This browser doesn't allow session storage - movie name");
+                                }
+                            </script>
+
+						  </div><br>
+              <div class="input-group">
+               <div class="input-group-addon">
+                <i class="fa fa-calendar">
+                </i>
+               </div>
+               <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" onchange="setDate();"/>
+			  </div><br>
+			 </div>
+
+            </div>
+            <div class="form-group">
+             <div class="col-sm-3">
+             </div>
+            </div>
+           </form>
+
+         </div>
+
+
+        <br>
+<div style="margin: auto;
+width: 70%;
+border: 3px solid rgb(133, 134, 131);
+padding: 20px;">
+
+            <h6 style="text-align: center">So far you have booked </h6>
+
+            <input class="input search-input" type="text" placeholder="Date Selected" id="setdate" disabled>
+            <br><br>
+            <input class="input search-input" type="text" value = "" id="setfilm" disabled>
+
+            <script>
+                if (typeof(Storage) !== "undefined") {
+                    var movieSet = document.getElementById("setfilm");
+                    movieSet.setAttribute("value",sessionStorage.getItem("movie"));
+                    sessionStorage.setItem("date",document.getElementById("date").value);
+                }else{
+                    alert("This browser doesn't allow session storage - movie name");
+                }
+            </script>
+            
+        <!-- <?php
+            echo '<input class="input search-input" type="text" value = "'.$_SESSION['movie'].'" id="setfilm" disabled>';
+        ?> -->
+        <!-- <input class="input search-input" type="text" placeholder="Name of the Film" id="setfilm" disabled> -->
+        <br><br>
+
+
+</div>
+</div>
+<div class="col-sm-3">
+</div>
+
+</div>
+<br>
+
+	<!-- <div align="left">
+		<button class="main-btn quick-view"> <a href="index.php">
+			<i class="fa fa-certificate" data-toggle="tooltip" data-placement="top"
+			title="Hooray!"></i> Back to home page </a></button>
+	</div> -->
+<hr>
+<div class="row">
+
+	<div class="col-sm-4" ><br></div>
+	<div class="col-sm-4 w3-container" ><br>
+
+		<div align="right">
+
+		<!-- <?php
+		if ($_SESSION['type']=="reserve"){
+			echo '<button class="main-btn quick-view  w3-red"  style="width:80%" > <a href="Seats.php">
+			<i class="fa fa-check"></i> Proceed to Seat Reserving</a>
+			</button>';
+		}elseif ($_SESSION['type']=="buy"){
+			echo '<button class="main-btn quick-view  w3-red " style="width:80%" > <a href="Seats.php" >
+			<i class="fa fa-check"></i> Proceed to Seat Booking</a>
+			</button>';
+		}else {
+			echo 'An error occured due to invalid case type... ';
+
+		}
+        ?> -->
+        
+        <button class="main-btn quick-view  w3-red"  style="width:80%" id="afterDate" onclick="afterDateClick();"> 
+            <i class="fa fa-check"></i></a>
+        </button>
+
+        <script>
+            document.getElementById("afterDate").innerHTML = sessionStorage.getItem("type");
+
+            function afterDateClick(){
+                sessionStorage.setItem("date",document.getElementById("date").value);
+                window.location.href = "seats.html";
+            }
+        </script>
+
+		</div>
+
+		<!-- <div align = "left">
+			<form action="includes/backToIndex.inc.php" method = "POST">
+				<button class="main-btn quick-view w3-black" type="submit" name="back" style="width:50%">	<i class="fa fa-mail-reply"></i> BACK TO HOME PAGE</button>
+			</form>
+		</div> -->
+	</div>
+
+	<div class="col-sm-4" ><br></div>
+
+</div>
+
+<br><br><br><br>
+
+	</div>
+
+
+<br><br><br><br><br>
+</div>
+
+
+<script>
+
+		var newdate;
+
+		$(document).ready(function(){
+			var date_input=$('input[name="date"]'); //our date input has the name "date"
+			var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+			date_input.datepicker({
+				format: 'mm/dd/yyyy',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+			})
+		})
+
+		function setSeats(){
+			var seats = document.getElementById("noofseats").value;
+			document.getElementById("setnoofseats").value=seats + " Seats on ";
+			// setseats.innerHTML = seats;
+		}
+
+		function setDate(){
+			newdate = document.getElementById("date").value;
+			document.getElementById("setdate").value = newdate + " for the film of ";
+		}
+
+		function setFilm(){
+			document.getElementById("setfilm").value = SherlockHolmes;
+		}
+		
+	</script>
+
+   </body>
+   </html>

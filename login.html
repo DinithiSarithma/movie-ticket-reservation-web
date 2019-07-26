@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Nathan James</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<style>
+		.carousel-inner img {
+    -webkit-filter: grayscale(90%);
+    filter: grayscale(80%); /* make all photos black and white */
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+.carousel-caption h3 {
+    color: #fff !important;
+}
+@media (max-width: 600px) {
+  .carousel-caption {
+    display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+  }
+}
+
+		</style>
+
+</head>
+
+
+<!-- firebase authentication -->
+
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA6swDC9X6ngehYczHLzxsk_Pck-b20ikY",
+    authDomain: "nathan-james-web.firebaseapp.com",
+    databaseURL: "https://nathan-james-web.firebaseio.com",
+    projectId: "nathan-james-web",
+    storageBucket: "nathan-james-web.appspot.com",
+    messagingSenderId: "429172932466"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<body>
+	<!-- HEADER -->
+	<header>
+		<!-- top Header -->
+		<div id="top-header">
+			<div class="container">
+				<div class="pull-left">
+					<span>Welcome to Nathan James film Ticketing system</span>
+				</div>
+				<div class="pull-right">
+					<ul class="header-top-links">
+						<li><a href="#">Contact US</a></li>
+						<li><a href="#">Advertise</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li class="dropdown default-dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>
+							<ul class="custom-menu">
+								<li><a href="#">English (ENG)</a></li>
+								<li><a href="#">German (DE)</a></li>
+								<li><a href="#">French (FR)</a></li>
+								<li><a href="#">Spanish (Es)</a></li>
+							</ul>
+						</li>
+						<li class="dropdown default-dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">LKR <i class="fa fa-caret-down"></i></a>
+							<ul class="custom-menu">
+								<li><a href="#">LKR (RS)</a></li>
+								<li><a href="#">EUR (€)</a></li>
+								<li><a href="#">USD ($)</a></li>
+
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /top Header -->
+
+		<!-- header -->
+		<div id="header">
+			<div class="container">
+				<div class="pull-left">
+					<!-- Logo -->
+					<div class="header-logo">
+						<a class="logo" href="#">
+							<img src="./img/logo.png" alt="">
+						</a>
+					</div>
+					<!-- /Logo -->
+
+					<!-- Search -->
+					<div class="header-search">
+						<form>
+							<input class="input search-input" type="text" placeholder="Enter your keyword">
+							<select class="input search-categories">
+								<option value="0">Film Categories</option>
+								<option value="1">All Movies</option>
+								<option value="1">Children Movies</option>
+								<option value="1">Elders Movies</option>
+
+							</select>
+							<button class="search-btn"><i class="fa fa-search"></i></button>
+						</form>
+					</div>
+					<!-- /Search -->
+				</div>
+				<div class="pull-right">
+					<ul class="header-btns">
+						<!-- Account -->
+						<li class="header-account dropdown default-dropdown">
+							<div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+								<div class="header-btns-icon">
+									<i class="fa fa-user-o"></i>
+								</div>
+                                
+								<strong class="text-uppercase" id="userName"><i class="fa fa-caret-down"></i></strong>
+							</div>
+							
+								<a href="#" class="text-uppercase" id="LogStatusBtn"></a>
+								<!-- <button href="#" class="text-uppercase" id="LogStatusBtn"></button> -->
+
+								<script type="text/javascript">
+
+									firebase.auth().onAuthStateChanged(function(user){
+										if (user) {
+												document.getElementById("userName").innerHTML = user.displayName;
+												document.getElementById("LogStatusBtn").innerHTML = "Log Out";
+											
+												document.getElementById("LogStatusBtn").onclick = function (){
+														firebase.auth().signOut();
+														document.getElementById("userName").innerHTML = "My Account";
+														var setPage = document.getElementById("LogStatusBtn");
+														setPage.innerHTML = "Log In";
+														setPage.setAttribute("href", "main.html");
+													}
+											}else{
+												document.getElementById("userName").innerHTML = "My Account";
+												var setPage = document.getElementById("LogStatusBtn");
+												setPage.innerHTML = "Log In";
+												setPage.setAttribute("href","login.html");
+											}
+									});
+									
+
+                                </script>
+
+                            </div>
+							<!-- <a href="Login.html" class="text-uppercase">Login</a> -->
+							<ul class="custom-menu">
+								<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+								<li><a href="#"><i class="fa fa-heart-o"></i> Film Wishlist</a></li>
+								<li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
+								<li><a href="Login.html"><i class="fa fa-unlock-alt"></i> Login</a></li>
+								<li><a href="Login.html"><i class="fa fa-lock"></i>Admin Login</a></li>
+								<li><a href="Signin.html"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+							</ul>
+						</li>
+						<!-- /Account -->
+
+						<!-- Cart -->
+						<!-- <li class="header-cart dropdown default-dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+								<div class="header-btns-icon">
+									<i class="fa fa-shopping-cart"></i>
+									<span class="qty">3</span>
+								</div>
+								<strong class="text-uppercase">My Cart:</strong>
+								<br>
+								<span>35.20 LKR</span>
+							</a>
+							<div class="custom-menu">
+								<div id="shopping-cart">
+									<div class="shopping-cart-list">
+										<div class="product product-widget">
+											<div class="product-thumb">
+												<img src="./img/Cars3.jpg" alt="">
+											</div>
+											<div class="product-body">
+												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
+												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+											</div>
+											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
+										</div>
+										<div class="product product-widget">
+											<div class="product-thumb">
+												<img src="./img/thumb-product01.jpg" alt="">
+											</div>
+											<div class="product-body">
+												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
+												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+											</div>
+											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
+										</div>
+									</div>
+									<div class="shopping-cart-btns">
+										<button class="main-btn">View Cart</button>
+										<button class="primary-btn"><a href="checkout.html">Checkout </a><i class="fa fa-arrow-circle-right"></i></button>
+									</div>
+								</div>
+							</div>
+						</li> -->
+						<!-- /Cart -->
+
+						<!-- Mobile nav toggle-->
+						<li class="nav-toggle">
+							<button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+						</li>
+						<!-- / Mobile nav toggle -->
+					</ul>
+				</div>
+			</div>
+			<!-- header -->
+		</div>
+		<!-- container -->
+	</header>
+	<!-- /HEADER -->
+
+	<!-- NAVIGATION -->
+	<div id="navigation">
+		<!-- container -->
+		<div class="container">
+			<div id="responsive-nav">
+				<!-- category nav -->
+					<!-- place the category nav here -->
+
+				<!-- menu nav -->
+				<div class="menu-nav">
+					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+					<ul class="menu-list">
+						<li><a href="#">Home</a></li>
+						<li><a href="#now Showing">Now Showing</a></li>
+						<li><a href="#Reservations">Reservations</a></li>
+						<li><a href="#Trending">Trending</a></li>
+						<li><a href="index.html">Events</a></li>
+						<li><a href="index.html">Seminars</a></li>
+						<li><a href="index.html">Offers</a></li>
+
+					</ul>
+				</div>
+				<!-- menu nav -->
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /NAVIGATION -->
+    <br><br>
+
+
+
+
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+		  <!-- row -->
+		  <div class="row">
+			<div class="col-sm-3"></div>
+		   
+  </div>
+  </div>
+  </div>
+  
+  <div class="row">
+	  <div class="col-sm-3"></div>
+	  <div class="col-sm-6">
+		  <div class="product-tab">
+			  <ul class="tab-nav">
+				  <!-- <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li> -->
+				  <li class="active" ><a data-toggle="tab" href="#tab3" style="font-size: 18pt;" >User Login</a></li>
+				  <li><a data-toggle="tab" href="#tab4" style="font-size: 18pt;">Admin Login</a></li>
+			  </ul>
+			  <div class="tab-content">
+				  <div id="tab3" class="tab-pane fade in active">
+  
+  
+	  <br><br>
+	  <!-- SIGN IN WIDGETS -->
+  
+	  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.1/firebaseui.js"></script>
+	  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.1/firebaseui.css" />
+	  <script type="text/javascript">
+		// FirebaseUI config.
+		var uiConfig = {
+		  signInSuccessUrl: 'bill.html',
+		  signInOptions: [
+			// Leave the lines as is for the providers you want to offer your users.
+			firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+			firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+			firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+			firebase.auth.GithubAuthProvider.PROVIDER_ID,
+			firebase.auth.EmailAuthProvider.PROVIDER_ID,
+			firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+			firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+		  ],
+		  // tosUrl and privacyPolicyUrl accept either url string or a callback
+		  // function.
+		  // Terms of service url/callback.
+		  tosUrl: '<your-tos-url>',
+		  // Privacy policy url/callback.
+		  privacyPolicyUrl: function() {
+			window.location.assign('<your-privacy-policy-url>');
+		  }
+		};
+  
+		// Initialize the FirebaseUI Widget using Firebase.
+		var ui = new firebaseui.auth.AuthUI(firebase.auth());
+		// The start method will wait until the DOM is loaded.
+		ui.start('#firebaseui-auth-container', uiConfig);
+	  </script>
+	  
+  
+	  <!-- The surrounding HTML is left untouched by FirebaseUI.
+		   Your app may use that space for branding, controls and other customizations.-->
+  
+	  <div id="firebaseui-auth-container"></div>
+	</div>
+  
+				  <div id="tab4" class="tab-pane fade in">
+					  <form id="checkout-form" class="clearfix">
+						  <div class="col-sm-6">
+							<div class="billing-details">
+							  
+							  <br><br>
+							  <div class="form-group">
+								<input class="input" type="email" id="adminId" placeholder="Admin Username" style="width:680px;" required>
+							  </div>
+							  
+							  
+							  <div class="form-group">
+								<input class="input" type="password" id="adminPassword" placeholder="Password" style="width:680px;" required>
+							  </div>
+							  
+							  
+							  <div class="form-group">
+								<div class="input-checkbox">
+								  <input type="checkbox" id="register">
+								  <label class="font-weak" for="register">Remember me</label>
+								  <div class="caption">
+									<p> Since we dont keep sessions you only will have to sign in again when you come to theatre.
+									  <p>
+								  </div>
+								</div>
+							  </div>
+							</div>
+							<div align="center">
+								<button class="main-btn quick-view" onclick="adminLogin()"> <a href="Admin/admin.dashboard.html"> Submit </a> </button>
+
+								<!-- <script>
+									function adminLogin(){
+										var databaseAdminRef = firebase.database().ref().child("Admin");
+										var email = document.getElementById("adminId").value;
+										var pass = document.getElementById("adminPassword").value;
+
+										var adminMail = databaseAdminRef.child("email");
+										var adminPass = databaseAdminRef.child("password");
+
+										adminMail.on('value',function(adminIdSnap){
+											var getAdminId = adminIdSnap.val();
+											console.log(getAdminId);
+											adminPass.on('value' , function(adminPassSnap){
+												var getAdminPass = adminPassSnap.val();
+												console.log(getAdminPass);
+												if (email==getAdminId && pass==getAdminPass) {
+													alert("Now you are logged in as ADMIN");
+													window.location.href("main.html");
+												}else{
+													alert("Incorrect username or password");
+													window.location.href("login.html");
+												}
+											});
+										});
+									}
+								</script> -->
+
+								<!-- <script>
+									function adminLogin(){
+										var databaseAdminRef = firebase.database().ref().child("Admin");
+										var email = document.getElementById("adminId").value;
+										var pass = document.getElementById("adminPassword").value;
+										console.log(email);
+										var email = document.getElementById("adminId").value;
+										var pass = document.getElementById("adminPassword").value;
+										adminMail.on('value' , function(adminIdSnap){
+											
+											adminPass.on('value', function(adminPassSnap){
+												if (email==adminIdSnap.val() && pass==adminPassSnap.val()) {
+													alert("Now you are logged in as ADMIN");
+													console.log("ok");
+													window.location.href = "main.html";
+
+													// window.location.href("main.html");
+													// document.getElementById("adminLogRef").setAttribute("href","Admin/admin.dashboard.html");
+													// document.getElementById("adminLogRef").setAttribute("href","seats.html");
+												}else{
+													alert("Incorrect username or password");
+													// document.getElementById("adminLogRef").setAttribute("href","login.html");
+													// window.location.href("main.html");
+												}
+											});
+										});
+									}
+								</script> -->
+
+							</div>
+						  </div>
+						  </form>
+	  
+				  </div>
+			  </div>
+		  </div>
+	  </div>
+  </div>
+	  <div class="col-sm-3"></div>
+  
+	  <!-- review -->
+  </div>
+
+  
+  <div class="col-md-12">
+	  
+  </div>
+
+    <!-- DROP DOWNS -->
+
+    	<!-- jQuery Plugins -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/slick.min.js"></script>
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/jquery.zoom.min.js"></script>
+	<script src="js/main.js"></script>
+
+	<!-- my js files -->
+	<script>
+			$(document).ready(function(){
+				$('[data-toggle="popover"]').popover();
+			});
+			</script>
+			
+
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA6swDC9X6ngehYczHLzxsk_Pck-b20ikY",
+    authDomain: "nathan-james-web.firebaseapp.com",
+    databaseURL: "https://nathan-james-web.firebaseio.com",
+    projectId: "nathan-james-web",
+    storageBucket: "nathan-james-web.appspot.com",
+    messagingSenderId: "429172932466"
+  };
+  firebase.initializeApp(config);
+</script>
+
+</body>
+
+</html>

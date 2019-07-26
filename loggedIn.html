@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> This is logged In page ... </title>
+        <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
+
+<!-- initialization from firebase -->
+    
+<script>
+
+// Initialize Firebase
+
+var config = {
+    apiKey: "AIzaSyA6swDC9X6ngehYczHLzxsk_Pck-b20ikY",
+    authDomain: "nathan-james-web.firebaseapp.com",
+    databaseURL: "https://nathan-james-web.firebaseio.com",
+    projectId: "nathan-james-web",
+    storageBucket: "nathan-james-web.appspot.com",
+    messagingSenderId: "429172932466"
+};
+firebase.initializeApp(config);
+
+</script>
+
+<!-- the stuff to be shown when logged In -->
+
+<script>
+
+    firebase.auth().onAuthStateChanged(function(user){
+        if (user) {
+            user.sendEmailVerification();
+            document.body.innerHTML = 'Congratz <b>'+ user.displayName +'</b> ,You are now logged in with <b>'+user.email+' </b>';
+        }else{
+            document.body.innerHTML = "You are NOT logged in !!!! ";
+        }
+    });
+    
+</script>
+
+    </head>
+</html>
